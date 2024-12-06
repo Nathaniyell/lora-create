@@ -31,8 +31,7 @@ export default function LandingPage() {
           {(animationUri && !imageUri) && (
             <FileUploadProvider>
               <MediaUpload 
-                promptText={!animationUri ? "Please select a thumbnail image" : undefined}
-              />
+              promptText="Please select a thumbnail image" />
             </FileUploadProvider>
           )}
         </div>
