@@ -10,10 +10,12 @@ import MediaUpload from '../MediaUpload'
 import CreateButtons from './CreateButtons'
 import { FileUploadProvider } from '@/providers/FileUploadProvider'
 import CollectionSelect from './CollectionSelect'
+import { useCollectionProvider } from '@/providers/CollectionProvider'
 
 export default function LandingPage() {
   const { creating, name } = useZoraCreateProvider()
   const { address } = useAccount()
+  const { selectedCollection } = useCollectionProvider()
 
   if (creating) {
     return (
@@ -33,7 +35,7 @@ export default function LandingPage() {
           </FileUploadProvider>
         </div>
         {name === undefined ? (
-          <CollectionSelect />
+          !selectedCollection && <CollectionSelect />
         ) : (
           <div className="md:mt-0 w-full flex flex-col items-center gap-3">
             <div className="w-full flex flex-col items-start gap-4">
