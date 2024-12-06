@@ -12,7 +12,7 @@ import { FileUploadProvider } from '@/providers/FileUploadProvider'
 import CollectionSelect from './CollectionSelect'
 
 export default function LandingPage() {
-  const { creating, name } = useZoraCreateProvider()
+  const { creating, name, imageUri, animationUri } = useZoraCreateProvider()
   const { address } = useAccount()
 
   if (creating) {
@@ -28,9 +28,11 @@ export default function LandingPage() {
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:w-1/2 flex flex-col items-center gap-5">
-          <FileUploadProvider>
-            <MediaUpload />
-          </FileUploadProvider>
+          {!imageUri && !animationUri && (
+            <FileUploadProvider>
+              <MediaUpload />
+            </FileUploadProvider>
+          )}
         </div>
         {name === undefined ? (
           <CollectionSelect />
