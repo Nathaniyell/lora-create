@@ -9,7 +9,7 @@ import Image from 'next/image'
 import VideoPlayer from './VideoPlayer'
 import { useFileUploadProvider } from '@/providers/FileUploadProvider'
 
-const MediaUpload = () => {
+const MediaUpload = ({ promptText }: { promptText?: string }) => {
   const { imageUri, animationUri, mimeType } = useZoraCreateProvider()
   const { fileUpload, loading, error, blurImageUrl } = useFileUploadProvider()
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -73,6 +73,7 @@ const MediaUpload = () => {
         {renderMedia()}
       </div>
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {promptText && <p className="text-sm mt-2 text-red-500">{promptText}</p>}
     </div>
   )
 }
