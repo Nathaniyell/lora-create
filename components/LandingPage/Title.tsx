@@ -7,13 +7,19 @@ const Title = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-2">
-      <Label htmlFor="title">Title</Label>
-      <Input
-        id="title"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="border border-black py-7 text-xl"
-      />
+      {!name ? (
+        <>
+          <Label htmlFor="title">Title</Label>
+          <Input
+            id="title"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border border-black py-7 text-xl"
+          />
+        </>
+      ) : (
+        <div className="text-xl">{name}</div>
+      )}
     </div>
   )
 }
